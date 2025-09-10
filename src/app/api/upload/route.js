@@ -15,7 +15,7 @@ export async function POST(req) {
       return NextResponse.json({ error: "No file uploaded" }, { status: 400 });
     }
 
-    // ✅ Read PDF into buffer (no saving to disk)
+    
     const buffer = Buffer.from(await file.arrayBuffer());
     const text = await loadPdf(buffer);
     const chunks = chunkText(text);

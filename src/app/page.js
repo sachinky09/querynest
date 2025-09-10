@@ -44,11 +44,16 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-black to-gray-950 text-gray-200 p-6">
-      <div className="w-full max-w-2xl bg-gray-900/80 backdrop-blur-lg border border-gray-800 rounded-2xl shadow-2xl p-8">
-        <h1 className="text-4xl font-extrabold text-center text-white mb-10 tracking-tight">
-          📄 PDF Q&A
+    <div className=" min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-black to-gray-950 text-gray-200 p-6">
+      <div className="w-full max-w-2xl bg-gray-900/80 backdrop-blur-lg border border-gray-800 rounded-2xl shadow-2xl p-8 animate-fadeIn">
+        {/* Title + Description */}
+        <h1 className="text-4xl font-extrabold text-center text-white mb-3 tracking-tight">
+          🪶 QueryNest
         </h1>
+        <p className="text-center text-gray-400 mb-8">
+          Upload a PDF, ask questions, and get instant answers powered by AI.  
+          <span className="text-green-400"> Simple. Fast. Smart.</span>
+        </p>
 
         {/* Upload Form */}
         <form
@@ -64,7 +69,7 @@ export default function Home() {
           <button
             type="submit"
             disabled={loading}
-            className="ml-3 flex items-center gap-2 px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow-md transition disabled:opacity-50"
+            className="ml-3 flex items-center gap-2 px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow-md transition-transform transform hover:scale-105 disabled:opacity-50"
           >
             {loading ? <Loader2 className="animate-spin w-4 h-4" /> : <Upload className="w-4 h-4" />}
             {loading ? "Processing..." : "Upload"}
@@ -75,7 +80,7 @@ export default function Home() {
         <form onSubmit={handleAsk} className="flex flex-col gap-4">
           <input
             type="text"
-            placeholder="Ask a question about the PDF..."
+            placeholder="Ask a question about your PDF..."
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
             className="border border-gray-700 bg-gray-800/70 rounded-lg p-3 text-gray-100 placeholder-gray-500 shadow-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition"
@@ -83,7 +88,7 @@ export default function Home() {
           <button
             type="submit"
             disabled={loading}
-            className="flex justify-center items-center gap-2 px-4 py-3 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg shadow-md transition disabled:opacity-50"
+            className="flex justify-center items-center gap-2 px-4 py-3 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg shadow-md transition-transform transform hover:scale-105 disabled:opacity-50"
           >
             {loading ? <Loader2 className="animate-spin w-4 h-4" /> : <Send className="w-4 h-4" />}
             {loading ? "Thinking..." : "Ask"}
@@ -92,7 +97,7 @@ export default function Home() {
 
         {/* Answer Display */}
         {answer && (
-          <div className="mt-8 p-6 bg-gray-800/70 border border-gray-700 rounded-xl shadow-inner">
+          <div className="mt-8 p-6 bg-gray-800/70 border border-gray-700 rounded-xl shadow-inner animate-slideUp">
             <h2 className="font-semibold text-green-400 mb-2">🤖 Answer:</h2>
             <p className="text-gray-100 leading-relaxed">{answer}</p>
           </div>
